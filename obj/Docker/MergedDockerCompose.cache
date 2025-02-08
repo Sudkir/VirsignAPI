@@ -1,0 +1,74 @@
+name: dockercompose13059970437241159814
+services:
+  VirsignAPI:
+    build:
+      context: C:\Users\Karl\source\repos\VirsignAPI
+      dockerfile: VirsignAPI/Dockerfile
+    depends_on:
+      mongodb:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+      DataGenerator__IntervalSeconds: "30"
+      JWT__AUDIENCE: your_audience
+      JWT__ISSUER: your_issuer
+      JWT__KEY: your_super_secret_key_here
+      MONGODB_CONNECTION_STRING: mongodb://admin:password@mongodb:27017
+    image: virsignapi
+    networks:
+      app-network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8080"
+        protocol: tcp
+      - mode: ingress
+        target: 443
+        published: "8081"
+        protocol: tcp
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\Karl\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Karl\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  mongodb:
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: admin
+    image: mongo:7.0
+    networks:
+      app-network: null
+    ports:
+      - mode: ingress
+        target: 27017
+        published: "27017"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: mongo-data
+        target: /data/db
+        volume: {}
+networks:
+  app-network:
+    name: dockercompose13059970437241159814_app-network
+    driver: bridge
+volumes:
+  mongo-data:
+    name: dockercompose13059970437241159814_mongo-data

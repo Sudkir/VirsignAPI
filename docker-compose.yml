@@ -1,0 +1,39 @@
+services:
+  VirsignAPI:
+    image: ${DOCKER_REGISTRY-}virsignapi
+    build:
+      context: .
+      dockerfile: VirsignAPI/Dockerfile
+    ports:
+      - "8080:80"
+      - "8081:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MONGODB_CONNECTION_STRING=mongodb://admin:password@mongodb:27017
+      - JWT__KEY=your_super_secret_key_here
+      - JWT__ISSUER=your_issuer
+      - JWT__AUDIENCE=your_audience
+      - DataGenerator__IntervalSeconds=30
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge

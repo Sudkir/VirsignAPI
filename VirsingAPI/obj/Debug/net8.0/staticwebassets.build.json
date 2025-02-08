@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "xuVQAb3LYMsl0UfDRKkT+IcpkUQCq9MLY1EM+8jB8nY=",
+  "Source": "VirsignAPI",
+  "BasePath": "_content/VirsignAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
