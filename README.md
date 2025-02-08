@@ -1,11 +1,11 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5+%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5+%D0%B4%D0%BB%D1%8F+vir-sign.com)](https://git.io/typing-svg)
 
-<h1>Технологии:</h1>
-<h1>ASP.NET Core 8.0</h1>
-<h1>MongoDB</h1>
-<h1>https</h1>
-<h1>Логирование в консоль и в файл с помощью Serilog</h1>
-<h1>JWT-авторизация</h1>
+<h3>Технологии:</h3>
+<h3>ASP.NET Core 8.0</h3>
+<h3>MongoDB</h3>
+<h3>https</h3>
+<h3>Логирование в консоль и в файл с помощью Serilog</h1>
+<h3>JWT-авторизация</h3>
 
 <h3 align="center">Swagger</h3>
 
